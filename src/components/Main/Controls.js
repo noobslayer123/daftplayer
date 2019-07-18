@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import Context from '../../Context';
 
 function Controls() {
-  const [active, setActive] = useState(false);
-
-  const toggleActive = () => setActive(!active);
+  const { playBtnActive, toggleActive } = useContext(Context);
 
   return (
     <div className="controls">
@@ -21,7 +20,7 @@ function Controls() {
         <div className="col-3">
           <button
             onClick={toggleActive}
-            className={active ? 'play-active' : 'play-inactive'}
+            className={playBtnActive ? 'play-active' : 'play-inactive'}
           />
         </div>
         <div className="col-4">

@@ -6,8 +6,11 @@ import Playlist from '../Playlist/Playlist';
 import Context from '../../Context';
 
 function Main() {
-  // const { displayMore } = useContext(Context);
-  const { toggleDisplayMore, toggleDisplayPlaylist } = useContext(Context);
+  const {
+    toggleDisplayMore,
+    toggleDisplayPlaylist,
+    displayPlaylist
+  } = useContext(Context);
 
   return (
     <>
@@ -16,11 +19,19 @@ function Main() {
           <div className="bg-image" />
           <div className="navigation">
             <button className="back" />
-            <div className="album">
-              <h4>ALBUM</h4>
-              <h3>Unreleased</h3>
-            </div>
-            <button className="more" onClick={toggleDisplayMore} />
+            {!displayPlaylist ? (
+              <div className="album">
+                <h4>ALBUM</h4>
+                <h3>Unreleased</h3>
+              </div>
+            ) : (
+              <div />
+            )}
+            {!displayPlaylist ? (
+              <button className="more" onClick={toggleDisplayMore} />
+            ) : (
+              <div />
+            )}
           </div>
           <PicSlider />
         </div>

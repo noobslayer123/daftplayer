@@ -67,7 +67,9 @@ class Provider extends Component {
     ],
 
     displayMore: false,
-    displayPlaylist: false
+    displayPlaylist: false,
+    playBtnActive: false,
+    currentSong: 0
   };
 
   //   componentDidMount() {
@@ -83,21 +85,34 @@ class Provider extends Component {
   //   }
 
   render() {
-    const { displayMore, displayPlaylist, playlist } = this.state;
+    const {
+      displayMore,
+      displayPlaylist,
+      playlist,
+      currentSong,
+      playBtnActive
+    } = this.state;
     const toggleDisplayMore = () => {
       this.setState({ displayMore: !displayMore });
     };
     const toggleDisplayPlaylist = () => {
       this.setState({ displayPlaylist: !displayPlaylist });
     };
+    const toggleActive = () => {
+      this.setState({ playBtnActive: !playBtnActive });
+    };
 
     return (
       <Context.Provider
         value={{
           displayMore,
+          displayPlaylist,
           playlist,
+          currentSong,
+          playBtnActive,
           toggleDisplayMore,
-          toggleDisplayPlaylist
+          toggleDisplayPlaylist,
+          toggleActive
         }}
       >
         {this.props.children}
